@@ -16,9 +16,12 @@ map <C-F10> I<Esc>4x
 "Shift Shortcuts
 map <S-Left> gT
 map <S-Right> gt
+imap <S-Left> <Esc><S-Left>
+imap <S-Right> <Esc><S-Right>
 
 "FN Shortcuts
 map <F2> :w<CR>
+imap <F2> <Esc><F2> 
 map <F3> :wq
 map <F5> :source $MYVIMRC<CR>
 map <F10> I//  <Esc>j
