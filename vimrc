@@ -13,8 +13,10 @@ retab
 "Ctrl Shortcuts
 map <C-W> :close<CR>
 map <C-F5> :tabe $MYVIMRC<CR>
-map <C-F10> I<Esc>4x
-imap <C-Space> <Esc>
+map <C-F10> I<Esc>4xj
+imap <C-F10> <Esc><C-F10>
+map <A-F10> I//  <Esc>j
+imap <A-F10> <Esc><A-F10>
 
 "Shift Shortcuts
 map <S-Left> gT
@@ -24,20 +26,19 @@ imap <S-Right> <Esc><S-Right>i
 
 "FN Shortcuts
 map <F2> :w<CR>
-imap <F2> <Esc><F2>a
+imap <F2> <Esc><F2>
 map <F3> :wq
 map <F5> :source $MYVIMRC<CR>
 map <F10> I//  <Esc>j
 
 "Common Abbreviation
-iab { {<Esc>o<Esc>o}<Esc>ki<Tab>
-iab " ""<Esc>i
-iab [ []<Esc>i
+iab { {<CR>}<Up><End>
+""iab [ []<Esc>i
 
 "C Abbreviations
 iab _in #include <.h><Esc>hhi
 iab _pf printf("\n", );<Esc>6hi
 iab _fun void function() {<Esc>o<Esc>o}<Esc>kkwwl
 iab _main int main(int argc, char** argv) {<Esc>o<Esc>o<Tab>return 0;<Esc>o}<Esc><<kki<Tab>
-iab _for for (int i=0; i<; i++) {<Esc>o<Esc>o}<Esc>kkA<Esc>7hi
-iab _while while() {<Esc>o<Esc>o}<Esc>kkA<Esc>3ha
+iab _for for (int i=0; i<; i++) {<CR><Tab><CR><BS>}<Esc>kk<End>7hi
+iab _while while() {<CR><Tab><CR><BS>}<Esc>kk<End>3ha
