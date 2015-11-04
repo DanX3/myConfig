@@ -17,6 +17,10 @@ map <C-F10> I<Esc>4xj
 imap <C-F10> <Esc><C-F10>
 map <A-F10> I//  <Esc>j
 imap <A-F10> <Esc><A-F10>
+map <C-Up> ddkP
+imap <C-Up> <Esc><C-Up>a
+map <C-Down> ddp
+imap <C-Down> <Esc><C-Down>a
 
 "Shift Shortcuts
 map <S-Left> gT
