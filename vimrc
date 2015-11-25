@@ -1,4 +1,4 @@
-set cindent
+set autoindent
 set noruler
 set number
 set mouse=a
@@ -10,7 +10,23 @@ set expandtab
 set shiftwidth=4
 retab
 
-"Code folding
+set nocompatible
+filetype off
+"execute pathogen#infect('bundle/{}');
+"filetype plugin indent on
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+"Plugin 'morhetz/gruvbox'
+"Plugin 'sjl/badwolf'"
+let g:gruvbox_contrast_dark='hard'
+set background=dark
+colorscheme gruvbox
+
 setlocal foldmethod=indent
 set foldcolumn=0
 
@@ -19,9 +35,9 @@ map <C-W> :close<CR>
 map <C-F5> :tabe $MYVIMRC<CR>
 map <C-F10> I<Esc>4xj
 imap <C-F10> <Esc><C-F10>
-imap <A-F10> <Esc><A-F10>
+map <C-F11> I<Del><Esc>$xxxxx<Down>
 map <C-Up> ddkP
-imap <C-Up> <Esc><C-Up>a
+map <C-Up> <Esc><C-Up>
 map <C-Down> ddp
 imap <C-Down> <Esc><C-Down>a
 
@@ -38,9 +54,13 @@ map <F3> :wq
 map <F5> :source $MYVIMRC<CR>
 map <F10> I//  <Esc>j
 
+"Alt Shortcuts
+map <A-F10> I//  <Esc>j
+imap <A-F10> <Esc><A-F10>
+map <A-F11> I'<End>\n' +<Esc><Down>
+
 "Common Abbreviation
 iab { {<CR>}<Up><End>
-""iab [ []<Esc>i
 
 "C Abbreviations
 iab _in #include <.h><Esc>hhi
@@ -49,5 +69,6 @@ iab _fun void function() {<Esc>o<Esc>o}<Esc>kkwwl
 iab _main int main(int argc, char** argv) {<Esc>o<Esc>o<Tab>return 0;<Esc>o}<Esc><<kki<Tab>
 iab _for for (var i=0; i<; i++) {<CR><Tab><CR><BS>}<Esc>kk<End>7hi
 iab _while while() {<CR><Tab><CR><BS>}<Esc>kk<End>3ha
+iab _pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
 
 iab _nt new THREE.
