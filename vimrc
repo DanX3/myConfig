@@ -10,22 +10,15 @@ set expandtab
 set shiftwidth=4
 retab
 
-set nocompatible
-filetype off
-"execute pathogen#infect('bundle/{}');
-"filetype plugin indent on
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
-call vundle#end()
-filetype plugin indent on
-
-"Plugin 'morhetz/gruvbox'
-"Plugin 'sjl/badwolf'"
-let g:gruvbox_contrast_dark='hard'
+"Theming
+let g:gruvbox_contrast_dark='soft'
 set background=dark
 colorscheme gruvbox
+
+"let g:solarized_termcolors=256
+"let g:solarized_contrast='low'
+"set background=dark
+"colorscheme solarized
 
 setlocal foldmethod=indent
 set foldcolumn=0
@@ -37,9 +30,11 @@ map <C-F10> I<Esc>4xj
 imap <C-F10> <Esc><C-F10>
 map <C-F11> I<Del><Esc>$xxxxx<Down>
 map <C-Up> ddkP
-map <C-Up> <Esc><C-Up>
+imap <C-Up> <Esc><C-Up>
 map <C-Down> ddp
 imap <C-Down> <Esc><C-Down>a
+map <C-Right> zA
+imap <C-Right> <Esc><C-Down>a
 
 "Shift Shortcuts
 map <S-Left> gT
@@ -58,6 +53,10 @@ map <F10> I//  <Esc>j
 map <A-F10> I//  <Esc>j
 imap <A-F10> <Esc><A-F10>
 map <A-F11> I'<End>\n' +<Esc><Down>
+map <A-Up> :wincmd k<CR>
+map <A-Down> :wincmd j<CR>
+map <A-Left> :wincmd h<CR>
+map <A-Right> :wincmd l<CR>
 
 "Common Abbreviation
 iab { {<CR>}<Up><End>
@@ -72,3 +71,5 @@ iab _while while() {<CR><Tab><CR><BS>}<Esc>kk<End>3ha
 iab _pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
 
 iab _nt new THREE.
+
+
