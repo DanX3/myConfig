@@ -56,7 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[00m\] \A \[\033[01;33m\]\w\[\033[00m\] '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u \[\033[01;33m\]\w $\[\033[00m\] '
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -112,14 +112,26 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ "$TERM" = "linux" ]; then
-    echo -ne "\e]P0282828" 
-    echo -ne "\e]P8fb4934"
-    echo -ne "\e]P9b8bb26"
-    echo -ne "\e]PAfabd2f"
-    echo -ne "\e]PB83a598"
-    echo -ne "\e]PCd3869b"
-    echo -ne "\e]PD8ec07c"
-    echo -ne "\e]PEebdbb2"
-    clear
-fi
+setfont /usr/share/consolefonts/Lat15-TerminusBoldVGA16.psf.gz
+alias sshlog='sventurelli@tesla.unife.it'
+alias temps='cat /sys/class/thermal/thermal_zone0/temp'
+
+#Base16 Colors with lighter background
+echo -ne "\e]P0282828"  #Background 0
+echo -ne "\e]P1282828"  #Background 1
+echo -ne "\e]P2383838"  #Background 2
+echo -ne "\e]P3585858"  #Background 3
+echo -ne "\e]P4B8B8B8"  #Background 4
+echo -ne "\e]P5D8D8D8"  #Background 5
+echo -ne "\e]P6E8E8E8"  #Background 6
+echo -ne "\e]P7F8F8F8"  #Background 7
+echo -ne "\e]P8AB4642"  #Red
+echo -ne "\e]P9DC9656"  #Orange
+echo -ne "\e]PaF7CA88"  #Yellow
+echo -ne "\e]PbA1B56C"  #Green
+echo -ne "\e]Pc86C1B9"  #Cyan
+echo -ne "\e]Pd7CAFC2"  #Blue
+echo -ne "\e]PeBA8BAF"  #Purple
+echo -ne "\e]PfA16946"  #Brown
+clear
+
