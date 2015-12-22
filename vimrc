@@ -33,8 +33,9 @@ map <C-Up> ddkP
 imap <C-Up> <Esc><C-Up>
 map <C-Down> ddp
 imap <C-Down> <Esc><C-Down>a
-map <C-Right> zA
-imap <C-Right> <Esc><C-Down>a
+inoremap<C-O> <Esc>o
+"map <C-Right> zA
+"imap <C-Right> <Esc><C-Down>a
 
 "Shift Shortcuts
 map <S-Left> gT
