@@ -135,3 +135,6 @@ echo -ne "\e]PeBA8BAF"  #Purple
 echo -ne "\e]PfA16946"  #Brown
 clear
 
+alias update="sudo apt-get update && sudo apt-get upgrade"
+alias testnet="ping -c 3 www.google.com"
+alias play="mplayer *.mp3 *.wav"
