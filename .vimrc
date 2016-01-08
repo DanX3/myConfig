@@ -14,6 +14,7 @@ execute pathogen#infect()
 filetype plugin on
 
 "Theming
+syntax enable
 let g:gruvbox_contrast_dark='soft'
 set background=dark
 colorscheme gruvbox
@@ -54,7 +55,9 @@ map <F5> :source $MYVIMRC<CR>
 map <A-F11> I'<End>\n' +<Esc><Down>
 
 "Common Abbreviation
-iab { {<CR>}<Up><End>
+iab {{ {<CR>}<Up><End>
+map <S-\> <Leader-C-Space>
+map "" I"<Esc>A"<Esc>
 
 "C Abbreviations
 imap ;in #include <.h><Esc>hhi
@@ -69,4 +72,15 @@ imap ;pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
 imap ;nt new THREE.
 imap ;cl console.log('');<Esc>hhi
 imap ;nt new THREE.
+
+
+"if strftime("%H") < 6 + 0
+    "echo "setting colorscheme to blue"
+"elseif strftime("%H") < 12 + 0
+    "echo "setting colorscheme to morning"
+"elseif strftime("%H") < 18 + 0
+    "echo "setting colorscheme to shine"
+"else
+    "echo "setting colorscheme to evening"
+"endif
 
