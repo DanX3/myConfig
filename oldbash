@@ -114,25 +114,24 @@ fi
 
 setfont /usr/share/consolefonts/Lat15-TerminusBoldVGA16.psf.gz
 alias sshlog='sventurelli@tesla.unife.it'
-alias temps='cat /sys/class/thermal/thermal_zone0/temp'
+alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
 #Base16 Colors with lighter background
-echo -ne "\e]P0282828"  #Background 0
-echo -ne "\e]P1282828"  #Background 1
-echo -ne "\e]P2383838"  #Background 2
-echo -ne "\e]P3585858"  #Background 3
-echo -ne "\e]P4B8B8B8"  #Background 4
-echo -ne "\e]P5D8D8D8"  #Background 5
-echo -ne "\e]P6E8E8E8"  #Background 6
-echo -ne "\e]P7F8F8F8"  #Background 7
-echo -ne "\e]P8AB4642"  #Red
-echo -ne "\e]P9DC9656"  #Orange
-echo -ne "\e]PaF7CA88"  #Yellow
-echo -ne "\e]PbA1B56C"  #Green
-echo -ne "\e]Pc86C1B9"  #Cyan
-echo -ne "\e]Pd7CAFC2"  #Blue
-echo -ne "\e]PeBA8BAF"  #Purple
-echo -ne "\e]PfA16946"  #Brown
+echo -ne "\e]P0263238"  #Background
+echo -ne "\e]P1d32f2f"  #Red Dark
+echo -ne "\e]P2388e3c"  #Green Dark
+echo -ne "\e]P3fbc858"  #Yellow Dark
+echo -ne "\e]P42196f3"  #Blue Dark
+echo -ne "\e]P58e24aa"  #Magenta Dark
+echo -ne "\e]P60097a7"  #Cyan Dark
+echo -ne "\e]P7dddddd"  #White Dark
+echo -ne "\e]P9f44336"  #Red
+echo -ne "\e]Pa8bc34a"  #Green
+echo -ne "\e]Pbfdd835"  #Yellow
+echo -ne "\e]Pc03a9f4"  #Blue
+echo -ne "\e]Pdba68c8"  #Purple
+echo -ne "\e]Pe26c6da"  #Cyan
+echo -ne "\e]Pfffffff"  #White
 clear
 
 alias update="sudo apt-get update && sudo apt-get upgrade"
