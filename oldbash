@@ -56,7 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u \[\033[01;33m\]\w $\[\033[00m\] '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[01;33m\]\w $\[\033[00m\] '
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -112,7 +112,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-setfont /usr/share/consolefonts/Lat15-TerminusBoldVGA16.psf.gz
+setfont /usr/share/consolefonts/Lat15-TerminusBold20x10.psf.gz
 alias sshlog='sventurelli@tesla.unife.it'
 alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
@@ -124,16 +124,18 @@ echo -ne "\e]P3fbc858"  #Yellow Dark
 echo -ne "\e]P42196f3"  #Blue Dark
 echo -ne "\e]P58e24aa"  #Magenta Dark
 echo -ne "\e]P60097a7"  #Cyan Dark
-echo -ne "\e]P7dddddd"  #White Dark
+echo -ne "\e]P7b0bec5"  #White
 echo -ne "\e]P9f44336"  #Red
 echo -ne "\e]Pa8bc34a"  #Green
 echo -ne "\e]Pbfdd835"  #Yellow
 echo -ne "\e]Pc03a9f4"  #Blue
 echo -ne "\e]Pdba68c8"  #Purple
 echo -ne "\e]Pe26c6da"  #Cyan
-echo -ne "\e]Pfffffff"  #White
+#echo -ne "\e]Pfffffff"  #White
+echo -ne "\e]Pfcfd8dc"  #White Dark
 clear
 
 alias update="sudo apt-get update && sudo apt-get upgrade"
 alias testnet="ping -c 3 www.google.com"
 alias play="mplayer *.mp3 *.wav"
+alias lynx="lynx www.google.com --accept_all_cookies"
