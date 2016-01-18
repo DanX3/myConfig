@@ -1,5 +1,5 @@
 set autoindent
-set noruler
+"set noruler
 set number
 set mouse=a
 set tabstop=4
@@ -36,16 +36,17 @@ imap <C-Up> <Esc><C-Up>
 map <C-Down> ddp
 imap <C-Down> <Esc><C-Down>a
 noremap <C-T> :tabedit 
-inoremap <C-O> <Esc>o
 map <C-\> :NERDTreeToggle<CR>
 
 "Shift Shortcuts
 map <S-Left> gT
+map tg gT
 map <S-Right> gt
 imap <S-Left> <Esc><S-Left>i
 imap <S-Right> <Esc><S-Right>i
 
 "FN Shortcuts
+inoremap <F1> <Esc>ddko
 map <F2> :w<CR>
 imap <F2> <Esc><F2>
 map <F3> :wq
@@ -57,7 +58,8 @@ map <A-F11> I'<End>\n' +<Esc><Down>
 "Common Abbreviation
 iab {{ {<CR>}<Up><End>
 map <S-\> <Leader-C-Space>
-map "" I"<Esc>A"<Esc>
+map "" I"<Esc>A"<Esc>o<Tab>
+map __ :s/-/_/g<CR>A:<CR><Tab>
 
 "C Abbreviations
 imap ;in #include <.h><Esc>hhi
