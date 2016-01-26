@@ -116,27 +116,58 @@ setfont /usr/share/consolefonts/Lat15-TerminusBold20x10.psf.gz
 alias sshlog='sventurelli@tesla.unife.it'
 alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
-#Base16 Colors with lighter background
-echo -ne "\e]P0263238"  #Background
-echo -ne "\e]P1d32f2f"  #Red Dark
-echo -ne "\e]P2388e3c"  #Green Dark
-echo -ne "\e]P3ffa000"  #Yellow Dark
-echo -ne "\e]P42196f3"  #Blue Dark
-echo -ne "\e]P58e24aa"  #Magenta Dark
-echo -ne "\e]P60097a7"  #Cyan Dark
-echo -ne "\e]P7b0bec5"  #White
-echo -ne "\e]P9f44336"  #Red
-echo -ne "\e]Pa8bc34a"  #Green
-echo -ne "\e]Pbffc107"  #Yellow
-echo -ne "\e]Pc03a9f4"  #Blue
-echo -ne "\e]Pdba68c8"  #Purple
-echo -ne "\e]Pe26c6da"  #Cyan
-#echo -ne "\e]Pfffffff"  #White
-echo -ne "\e]Pfcfd8dc"  #White Dark
+palette=2
+if [ $darkpalette -eq 1 ] ; then #Material Dark
+    echo -ne "\e]P0263238"  #Background
+    echo -ne "\e]P1d32f2f"  #Red Background
+    echo -ne "\e]P2388e3c"  #Green Background
+    echo -ne "\e]P3ffa000"  #Yellow Background
+    echo -ne "\e]P42196f3"  #Blue Background
+    echo -ne "\e]P58e24aa"  #Magenta Background
+    echo -ne "\e]P60097a7"  #Cyan Background
+    echo -ne "\e]P7b0bec5"  #White
+    echo -ne "\e]P9f44336"  #Red
+    echo -ne "\e]Pa8bc34a"  #Green
+    echo -ne "\e]Pbffc107"  #Yellow
+    echo -ne "\e]Pc03a9f4"  #Blue
+    echo -ne "\e]Pdba68c8"  #Purple
+    echo -ne "\e]Pe26c6da"  #Cyan
+    echo -ne "\e]Pfcfd8dc"  #White 
+elif [ $palette -eq 2 ] ; then  #Dark Solarized
+    echo -ne "\e]P0002b36"  #Background
+    echo -ne "\e]P1d32f2f"  #Red Background
+    echo -ne "\e]P2388e3c"  #Green Background
+    echo -ne "\e]P3ffa000"  #Yellow Background
+    echo -ne "\e]P42196f3"  #Blue Background
+    echo -ne "\e]P58e24aa"  #Magenta Background
+    echo -ne "\e]P60097a7"  #Cyan Background
+    echo -ne "\e]P7839496"  #White
+    echo -ne "\e]P9dc322f"  #Red
+    echo -ne "\e]Pa859900"  #Green
+    echo -ne "\e]Pbbc8900"  #Yellow
+    echo -ne "\e]Pc268bd2"  #Blue
+    echo -ne "\e]Pdd33682"  #Purple
+    echo -ne "\e]Pe2aa198"  #Cyan
+    echo -ne "\e]Pf586e75"  #White 
+else #Light Solarized
+    echo -ne "\e]P0fdf6e3"  #Background
+    echo -ne "\e]P1d32f2f"  #Red Background
+    echo -ne "\e]P2388e3c"  #Green Background
+    echo -ne "\e]P3ffa000"  #Yellow Background
+    echo -ne "\e]P42196f3"  #Blue Background
+    echo -ne "\e]P58e24aa"  #Magenta Background
+    echo -ne "\e]P60097a7"  #Cyan Background
+    echo -ne "\e]P7657b83"  #White
+    echo -ne "\e]P9dc322f"  #Red
+    echo -ne "\e]Pa859900"  #Green
+    echo -ne "\e]Pbbc8900"  #Yellow
+    echo -ne "\e]Pc268bd2"  #Blue
+    echo -ne "\e]Pdd33682"  #Purple
+    echo -ne "\e]Pe2aa198"  #Cyan
+    echo -ne "\e]Pfcfd8dc"  #White 
+fi
 clear
-
-cursor_style_full_block_blinking=16
-
+#echo -e "\e[?112c"
 alias update="sudo apt-get update && sudo apt-get upgrade"
 alias testnet="ping -c 3 www.google.com"
 alias play="mplayer *.mp3 *.wav"
