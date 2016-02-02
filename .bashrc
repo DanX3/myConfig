@@ -55,7 +55,7 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\w $\[\033[00m\] '
+PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[1;37m\]'
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
