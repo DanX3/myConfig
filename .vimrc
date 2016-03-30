@@ -11,13 +11,16 @@ set shiftwidth=4
 retab
 
 execute pathogen#infect()
+syntax on
 filetype plugin on
+set laststatus=2
+set ttimeoutlen=50
 
 "Theming
 syntax enable
 let g:gruvbox_contrast_dark='soft'
 set background=dark
-colorscheme gruvbox
+colorscheme monokai
 
 "let g:solarized_termcolors=256
 "let g:solarized_contrast='low'
@@ -56,7 +59,7 @@ map <F5> :source $MYVIMRC<CR>
 map <A-F11> I'<End>\n' +<Esc><Down>
 
 "Common Abbreviation
-iab {{ {<CR>}<Up><End>
+iab {} {<CR>}<Up><End>
 map <S-\> <Leader-C-Space>
 map "" I"<Esc>A"<Esc>o<Tab>
 map __ :s/-/_/g<CR>A:<CR><Tab>
