@@ -21,11 +21,11 @@ syntax enable
 "let g:solarized_contrast='high'
 "set background=dark
 set background=dark
-colorscheme monokai
+colorscheme Tomorrow-Night-Eighties
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ''
 "let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 
 " unicode symbols
 "let g:airline_left_sep = '»'
@@ -114,8 +114,10 @@ inoremap ;pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
 
 "Javascript Abbreviations
 imap ;nt new THREE.
-imap ;cl console.log('');<Esc>hhi
+inoremap ;cl console.log('');<Esc>hhi
 imap ;nt new THREE.
+inoremap $$ $("")<Left><Left>
+imap ({ ({<CR>
 
 "if strftime("%H") < 6 + 0
     "echo "setting colorscheme to blue"
