@@ -14,7 +14,8 @@ execute pathogen#infect()
 syntax on
 filetype plugin on
 set laststatus=2
-set ttimeoutlen=50
+set ttimeoutlen=5
+
 
 "Theming
 syntax enable
@@ -38,7 +39,8 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
-let run = "!pebble build"
+"let run = "!pebble build"
+let run = "!nodejs server.js"
 let install = "!pebble install --cloudpebble"
 "let g:airline_symbols.branch = ''
 "let g:airline_symbols.readonly = ''
@@ -63,6 +65,8 @@ imap <C-Down> <Esc><C-Down>a
 noremap <C-T> :tabedit 
 map <C-\> :NERDTreeToggle<CR>
 map ; A;<Esc>
+inoremap <C-J> <Esc>A;<CR>
+
 
 "Shift Shortcuts
 map <S-Left> gT
@@ -82,6 +86,7 @@ map <F5> :source $MYVIMRC<CR>
 map <F7> mzgg=G`z
 map <F9> :execute install<CR>
 map <F10> :execute run<CR>
+map <F12> @:
 
 "Alt Shortcuts
 map <A-F11> I'<End>\n' +<Esc><Down>
