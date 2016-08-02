@@ -170,5 +170,15 @@ clear
 #echo -e "\e[?112c"
 alias update="sudo apt-get update && sudo apt-get upgrade"
 alias testnet="ping -c 3 www.google.com"
-alias play="mplayer *.mp3 *.wav"
+alias play="mplayer -shuffle *.mp3 *.wav"
 alias lynx="lynx www.google.com --accept_all_cookies"
+alias sshcloud="ssh optimans@64.137.206.167"
+alias pingcloud="ping 64.137.206.167"
+
+LD_LIBRARY_PATH="/usr/local/cuda/lib64"
+export LD_LIBRARY_PATH
+PATH="$PATH:/usr/local/cuda/bin"
+export PATH
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
