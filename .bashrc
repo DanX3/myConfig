@@ -112,7 +112,7 @@ if ! shopt -oq posix; then
 fi
 
 #fbset myMode
-setfont /usr/share/consolefonts/Lat15-TerminusBold20x10.psf.gz
+setfont /usr/share/consolefonts/Lat15-TerminusBold22x11.psf.gz
 alias sshlog='sventurelli@tesla.unife.it'
 alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
