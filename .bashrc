@@ -55,7 +55,7 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[0;37m\]'
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\w $\[\033[00m\] '
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -83,7 +83,7 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -ahlF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -116,8 +116,8 @@ setfont /usr/share/consolefonts/Lat15-TerminusBold20x10.psf.gz
 alias sshlog='sventurelli@tesla.unife.it'
 alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
-palette=2
-if [ $darkpalette -eq 1 ] ; then #Material Dark
+palette=3
+if [ $palette -eq 1 ] ; then #Material Dark
     echo -ne "\e]P0263238"  #Background
     echo -ne "\e]P1d32f2f"  #Red Background
     echo -ne "\e]P2388e3c"  #Green Background
@@ -149,6 +149,22 @@ elif [ $palette -eq 2 ] ; then  #Dark Solarized
     echo -ne "\e]Pdd33682"  #Purple
     echo -ne "\e]Pe2aa198"  #Cyan
     echo -ne "\e]Pf586e75"  #White 
+elif [ $palette -eq 3 ] ; then  #Tomorrow Night
+    echo -ne "\e]P027292c"  #Background
+    #echo -ne "\e]P1"  #Red Background
+    #echo -ne "\e]P2"  #Green Background
+    #echo -ne "\e]P3"  #Yellow Background
+    #echo -ne "\e]P4"  #Blue Background
+    #echo -ne "\e]P5"  #Magenta Background
+    #echo -ne "\e]P6"  #Cyan Background
+    echo -ne "\e]P7d7dad8"  #White 
+    echo -ne "\e]P9d77c79"  #Red
+    echo -ne "\e]Pac2c77b"  #Green
+    echo -ne "\e]Pbf4cf86"  #Yellow
+    echo -ne "\e]Pc92b2ca"  #Blue
+    echo -ne "\e]Pdc0a7c7"  #Purple
+    echo -ne "\e]Pe9ac9c4"  #Cyan
+    echo -ne "\e]Pfd7dad8"  #White 
 else #Light Solarized
     echo -ne "\e]P0fdf6e3"  #Background
     echo -ne "\e]P1d32f2f"  #Red Background
@@ -170,15 +186,8 @@ clear
 #echo -e "\e[?112c"
 alias update="sudo apt-get update && sudo apt-get upgrade"
 alias testnet="ping -c 3 www.google.com"
-alias play="mplayer -shuffle *.mp3 *.wav"
+alias play="mplayer *.mp3 *.wav"
 alias lynx="lynx www.google.com --accept_all_cookies"
-alias sshcloud="ssh optimans@64.137.206.167"
-alias pingcloud="ping 64.137.206.167"
-
-LD_LIBRARY_PATH="/usr/local/cuda/lib64"
-export LD_LIBRARY_PATH
-PATH="$PATH:/usr/local/cuda/bin"
+PATH=$PATH:/home/pi/jdk1.8.0_77/bin/
 export PATH
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+fbterm
