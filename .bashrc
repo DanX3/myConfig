@@ -188,6 +188,8 @@ alias update="sudo apt-get update && sudo apt-get upgrade"
 alias testnet="ping -c 3 www.google.com"
 alias play="mplayer *.mp3 *.wav"
 alias lynx="lynx www.google.com --accept_all_cookies"
+alias sshcloud="ssh optimans@64.137.206.167"
+alias pingcloud="ping 64.137.206.167"
 PATH=$PATH:/home/pi/jdk1.8.0_77/bin/
 export PATH
 fbterm
