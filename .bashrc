@@ -179,6 +179,3 @@ LD_LIBRARY_PATH="/usr/local/cuda/lib64"
 export LD_LIBRARY_PATH
 PATH="$PATH:/usr/local/cuda/bin"
 export PATH
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
