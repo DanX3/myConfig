@@ -55,7 +55,7 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-PS1='\[\e[1;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] \[\e[0;37m\]'
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\w \033[34m$\[\033[00m\] '
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -83,7 +83,7 @@ fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -ahlF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -116,8 +116,8 @@ setfont /usr/share/consolefonts/Lat15-TerminusBold22x11.psf.gz
 alias sshlog='sventurelli@tesla.unife.it'
 alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
-palette=2
-if [ $darkpalette -eq 1 ] ; then #Material Dark
+palette=1
+if [ $palette -eq 1 ] ; then #Material Dark
     echo -ne "\e]P0263238"  #Background
     echo -ne "\e]P1d32f2f"  #Red Background
     echo -ne "\e]P2388e3c"  #Green Background
@@ -128,10 +128,11 @@ if [ $darkpalette -eq 1 ] ; then #Material Dark
     echo -ne "\e]P7b0bec5"  #White
     echo -ne "\e]P9f44336"  #Red
     echo -ne "\e]Pa8bc34a"  #Green
-    echo -ne "\e]Pbffc107"  #Yellow
+    #echo -ne "\e]Pbffc107"  #Yellow
+    echo -ne "\e]Pb8bc34a"  #Cyan opposite to Yellow
     echo -ne "\e]Pc03a9f4"  #Blue
     echo -ne "\e]Pdba68c8"  #Purple
-    echo -ne "\e]Pe26c6da"  #Cyan
+    echo -ne "\e]Pe4dd0e1"  #Cyan
     echo -ne "\e]Pfcfd8dc"  #White 
 elif [ $palette -eq 2 ] ; then  #Dark Solarized
     echo -ne "\e]P0002b36"  #Background
@@ -149,7 +150,23 @@ elif [ $palette -eq 2 ] ; then  #Dark Solarized
     echo -ne "\e]Pdd33682"  #Purple
     echo -ne "\e]Pe2aa198"  #Cyan
     echo -ne "\e]Pf586e75"  #White 
-else #Light Solarized
+elif [ $palette -eq 3 ] ; then  #Tomorrow Night
+    echo -ne "\e]P027292c"  #Background
+    #echo -ne "\e]P1"  #Red Background
+    #echo -ne "\e]P2"  #Green Background
+    #echo -ne "\e]P3"  #Yellow Background
+    #echo -ne "\e]P4"  #Blue Background
+    #echo -ne "\e]P5"  #Magenta Background
+    #echo -ne "\e]P6"  #Cyan Background
+    echo -ne "\e]P7d7dad8"  #White 
+    echo -ne "\e]P9d77c79"  #Red
+    echo -ne "\e]Pac2c77b"  #Green
+    echo -ne "\e]Pbf4cf86"  #Yellow
+    echo -ne "\e]Pc92b2ca"  #Blue
+    echo -ne "\e]Pdc0a7c7"  #Purple
+    echo -ne "\e]Pe9ac9c4"  #Cyan
+    echo -ne "\e]Pfd7dad8"  #White 
+elif [ $palette -eq 4 ] ; then #Light Solarized
     echo -ne "\e]P0fdf6e3"  #Background
     echo -ne "\e]P1d32f2f"  #Red Background
     echo -ne "\e]P2388e3c"  #Green Background
@@ -165,17 +182,31 @@ else #Light Solarized
     echo -ne "\e]Pdd33682"  #Purple
     echo -ne "\e]Pe2aa198"  #Cyan
     echo -ne "\e]Pfcfd8dc"  #White 
+else #Light Solarized
+    echo -ne "\e]P02f3030"  #Background
+    echo -ne "\e]P1d32f2f"  #Red Background
+    echo -ne "\e]P2388e3c"  #Green Background
+    echo -ne "\e]P3ffa000"  #Yellow Background
+    echo -ne "\e]P42196f3"  #Blue Background
+    echo -ne "\e]P58e24aa"  #Magenta Background
+    echo -ne "\e]P60097a7"  #Cyan Background
+    echo -ne "\e]P7f8f8f2"  #White
+    echo -ne "\e]P9dc322f"  #Red
+    echo -ne "\e]Pa859900"  #Green
+    echo -ne "\e]Pbb58990"  #Yellow
+    echo -ne "\e]Pc268b2d"  #Blue
+    echo -ne "\e]Pd6c71c4"  #Purple
+    echo -ne "\e]Pe2aa198"  #Cyan
+    echo -ne "\e]Pff8f8f2"  #White
 fi
 clear
 #echo -e "\e[?112c"
 alias update="sudo apt-get update && sudo apt-get upgrade"
 alias testnet="ping -c 3 www.google.com"
-alias play="mplayer -shuffle *.mp3 *.wav"
+alias play="mplayer *.mp3 *.wav"
 alias lynx="lynx www.google.com --accept_all_cookies"
 alias sshcloud="ssh optimans@64.137.206.167"
 alias pingcloud="ping 64.137.206.167"
-
-LD_LIBRARY_PATH="/usr/local/cuda/lib64"
-export LD_LIBRARY_PATH
-PATH="$PATH:/usr/local/cuda/bin"
+PATH=$PATH:/home/pi/jdk1.8.0_77/bin/
 export PATH
+fbterm
