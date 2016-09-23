@@ -12,6 +12,10 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+#adding support for showing git branch
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source "${GITAWAREPROMPT}/main.sh"
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -55,7 +59,12 @@ if [ -n "$force_color_prompt" ]; then
 	color_prompt=
     fi
 fi
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\w \033[34m$\[\033[00m\] '
+PS1='${debian_chroot:+($debian_chroot)}\
+\[$txtblu\]\w\
+\[$txtgrn\] $git_branch\
+\[$txtylw\]$git_dirty\
+\[$txtred\] \$\
+\[$txtrst\] '
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -118,7 +127,8 @@ alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
 palette=1
 if [ $palette -eq 1 ] ; then #Material Dark
-    echo -ne "\e]P0263238"  #Background
+    echo -ne "\e]P027292c"  #Background
+    #echo -ne "\e]P0263238"  #Background
     echo -ne "\e]P1d32f2f"  #Red Background
     echo -ne "\e]P2388e3c"  #Green Background
     echo -ne "\e]P3ffa000"  #Yellow Background
@@ -151,7 +161,8 @@ elif [ $palette -eq 2 ] ; then  #Dark Solarized
     echo -ne "\e]Pe2aa198"  #Cyan
     echo -ne "\e]Pf586e75"  #White 
 elif [ $palette -eq 3 ] ; then  #Tomorrow Night
-    echo -ne "\e]P027292c"  #Background
+    echo -ne "\e]P0263238"  #Background
+    #echo -ne "\e]P027292c"  #Background
     #echo -ne "\e]P1"  #Red Background
     #echo -ne "\e]P2"  #Green Background
     #echo -ne "\e]P3"  #Yellow Background
