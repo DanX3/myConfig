@@ -13,7 +13,7 @@ esac
 HISTCONTROL=ignoreboth
 
 #adding support for showing git branch
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
+export GITAWAREPROMPT=~/.bash/
 source "${GITAWAREPROMPT}/main.sh"
 
 # append to the history file, don't overwrite it
@@ -60,10 +60,10 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 PS1='${debian_chroot:+($debian_chroot)}\
-\[$txtblu\]\w\
-\[$txtgrn\] $git_branch\
-\[$txtylw\]$git_dirty\
-\[$txtred\] \$\
+\[$bldblu\]\w\
+\[$bldgrn\] $git_branch\
+\[$bldylw\]$git_dirty\
+\[$bldred\] \$\
 \[$txtrst\] '
 unset color_prompt force_color_prompt
 
