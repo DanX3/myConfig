@@ -14,7 +14,7 @@ execute pathogen#infect()
 syntax on
 filetype plugin on
 set laststatus=2
-set ttimeoutlen=5
+set timeoutlen=300
 
 
 "Theming
@@ -51,8 +51,8 @@ let install = "!pebble install --cloudpebble"
 "let g:solarized_termcolors=256
 "let g:solarized_contrast='low'
 
-setlocal foldmethod=indent
-set foldcolumn=0
+"setlocal foldmethod=indent
+"set foldcolumn=0
 
 "Ctrl Shortcuts
 "map <C-W> :close<CR>
@@ -95,18 +95,19 @@ map <A-F11> I'<End>\n' +<Esc><Down>
 inoremap {<CR> {<CR>}<Esc>O<Tab>
 inoremap {} {}
 inoremap {% {%  %}<Left><Left><Left>
-inoremap (  ()<Left>
-inoremap () ()
-inoremap [  []<Left>
-inoremap [] []
+"inoremap (  ()<Left>
+"inoremap () ()
+"inoremap [  []<Left>
+"inoremap [] []
 map \\ <Leader>c<Space>
 map "" I"<Esc>A"<Esc>o<Tab>
-inoremap " ""<Left>
-inoremap "" ""
-inoremap ' ''<Left>
-inoremap '' ''
+"inoremap " ""<Left>
+"inoremap "" ""
+"inoremap ' ''<Left>
+"inoremap '' ''
 "map __ :s/-/_/g<CR>A:<CR><Tab>
 map __ :s/-/_/g<CR>A
+nnoremap <Space> i_<Esc>r
 
 "C Abbreviations
 inoremap ;in #include <.h><Esc>hhi
@@ -123,6 +124,10 @@ inoremap ;cl console.log('');<Esc>hhi
 imap ;nt new THREE.
 inoremap $$ $("")<Left><Left>
 imap ({ ({<CR>
+
+imap ;swi switch() {<CR>case :<Esc>o<Tab>break;<Up><Up><Left><Left><Left>
+imap ;out System.out.println();<Left><Left>
+
 
 "if strftime("%H") < 6 + 0
     "echo "setting colorscheme to blue"
