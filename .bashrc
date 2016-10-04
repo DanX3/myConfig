@@ -60,7 +60,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 PS1='${debian_chroot:+($debian_chroot)}\
-\[$bldblu\]\w\
+\[$bldblu\]\u \W\
 \[$bldgrn\] $git_branch\
 \[$bldylw\]$git_dirty\
 \[$bldred\] \$\
@@ -218,6 +218,8 @@ alias play="mplayer *.mp3 *.wav"
 alias lynx="lynx www.google.com --accept_all_cookies"
 alias sshcloud="ssh optimans@64.137.206.167"
 alias pingcloud="ping 64.137.206.167"
+alias sts="git status"
+alias newnote='if [ -f `date +%d-%m-%y` ]; then     echo "A note exists yet"; else     touch `date +%d-%m-%y`; fi'
 PATH=$PATH:/home/pi/jdk1.8.0_77/bin/
 export PATH
 fbterm
