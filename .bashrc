@@ -247,6 +247,7 @@ alias vp="vim plot.p"
 alias vc="vim code.c"
 alias es="bash script.sh"
 alias ep="gnuplot plot.p"
+alias experiment="mkdir $1 && cp ~/myConfig/sample/* $1"
 
 
 #fbterm

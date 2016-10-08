@@ -1,9 +1,17 @@
-sudo apt-get install vim
-sudo apt-get install terminator
-git config --global user.email daniel.tolomelli@gmail.com
-git config --global user.name Daniele Tolomelli
-sudo apt-get install gparted
-sudo apt-get install clementine 
-sudo apt-get install mplayer 
-ln -s /sys/class/backlight/*/brightness ~/brightness
-ln -s /sys/class/power_supply/*/capacity ~/battery
+echo "Installing dotfiles..."
+cp -r .bashrc .vimrc .bash/ .vim/  ~/
+sudo cp experiment /usr/bin/experiment
+
+echo "Installing fonts..."
+sudo cp -r opentype/ /usr/share/fonts/
+fc-cache
+
+echo "Setting git aliases"
+git config --global alias.ss status
+git config --global alias.last 'log --oneline -1'
+git config --global alias.recent 'log --oneline -10 --graph --decorate'
+git config --global alias.cm commit
+git config --global alias.co checkout
+git config --global alias.pullom 'pull origin master'
+git config --global alias.pushom 'push origin master'
+git config --global alias.cme 'commit -m "quick commit"'

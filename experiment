@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Creating directory $1"
+mkdir $1
+echo "Copying sample files from ~/sample/"
+cp ~/sample/* $1
