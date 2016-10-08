@@ -64,7 +64,7 @@ map <C-Down> ddp
 imap <C-Down> <Esc><C-Down>a
 noremap <C-T> :tabedit 
 map <C-\> :NERDTreeToggle<CR>
-map ; A;<Esc>
+map ;; A;<Esc>
 inoremap <C-J> <Esc>A;<CR>
 
 
@@ -78,12 +78,14 @@ imap <S-Right> <Esc><S-Right>i
 "FN Shortcuts
 inoremap <F1> <Esc>ddko
 map <F2> :w<CR>
+map <F2><F2> :wall<CR>
 imap <F2> <Esc><F2>
+imap <F2><F2> <Esc><F2><F2>
 map <F3> :wq
 map <F4> bdw
 imap <F4> <C-W>
 map <F5> :source $MYVIMRC<CR>
-map <F7> mzgg=G`z
+map <F7> :!astyle --style=google '@'
 map <F9> :execute install<CR>
 map <F10> :execute run<CR>
 map <F12> @:
@@ -108,14 +110,15 @@ map "" I"<Esc>A"<Esc>o<Tab>
 "map __ :s/-/_/g<CR>A:<CR><Tab>
 map __ :s/-/_/g<CR>A
 nnoremap <Space> i_<Esc>r
+inoremap ;bash <Esc>ggi#!/bin/bash<CR><Esc>''i
 
 "C Abbreviations
 inoremap ;in #include <.h><Esc>hhi
 inoremap ;pf printf("\n", );<Esc>6hi
 inoremap ;fun void function() {<Esc>o<Esc>o}<Esc>kkwwl
 inoremap ;main int main(int argc, char** argv) {<Esc>o<Esc>o<Tab>return 0;<Esc>o}<Esc><<kki<Tab>
-inoremap ;for for (var i=0; i<; i++) {<CR><Tab><CR><BS>}<Esc>kk<End>7hi
-inoremap ;while while() {<CR><Tab><CR><BS>}<Esc>kk<End>3ha
+imap ;for for (int i=0; i<; i++) {<CR><Esc>ddkf<a
+imap ;while while() {<CR><Esc>ddkf(a
 inoremap ;pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
 
 "Javascript Abbreviations
