@@ -60,7 +60,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 PS1='${debian_chroot:+($debian_chroot)}\
-\[$bldblu\]\u \W\
+\[$bldblu\]\u \w\
 \[$bldgrn\] $git_branch\
 \[$bldylw\]$git_dirty\
 \[$bldred\] \$\
@@ -121,7 +121,7 @@ if ! shopt -oq posix; then
 fi
 
 #fbset myMode
-setfont /usr/share/consolefonts/Lat15-TerminusBold22x11.psf.gz
+setfont /usr/share/consolefonts/Lat15-TerminusBold14.psf.gz
 alias sshlog='sventurelli@tesla.unife.it'
 alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
@@ -193,7 +193,7 @@ elif [ $palette -eq 4 ] ; then #Light Solarized
     echo -ne "\e]Pdd33682"  #Purple
     echo -ne "\e]Pe2aa198"  #Cyan
     echo -ne "\e]Pfcfd8dc"  #White 
-else #Light Solarized
+elif [ $palette -eq 5] ; then  #Light Solarized
     echo -ne "\e]P02f3030"  #Background
     echo -ne "\e]P1d32f2f"  #Red Background
     echo -ne "\e]P2388e3c"  #Green Background
@@ -209,6 +209,22 @@ else #Light Solarized
     echo -ne "\e]Pd6c71c4"  #Purple
     echo -ne "\e]Pe2aa198"  #Cyan
     echo -ne "\e]Pff8f8f2"  #White
+else #Github
+    echo -ne "\e]P0ffffff"  #Background
+    echo -ne "\e]P1d32f2f"  #Red Background
+    echo -ne "\e]P2388e3c"  #Green Background
+    echo -ne "\e]P3ffa000"  #Yellow Background
+    echo -ne "\e]P42196f3"  #Blue Background
+    echo -ne "\e]P58e24aa"  #Magenta Background
+    echo -ne "\e]P60097a7"  #Cyan Background
+    echo -ne "\e]P7333333"  #White
+    echo -ne "\e]P9a71d5d"  #Red
+    echo -ne "\e]Pa859900"  #Green
+    echo -ne "\e]Pbb58990"  #Yellow
+    echo -ne "\e]Pc183691"  #Blue
+    echo -ne "\e]Pd795da3"  #Purple
+    echo -ne "\e]Pe0086b3"  #Cyan
+    echo -ne "\e]Pf333333"  #White
 fi
 clear
 #echo -e "\e[?112c"
@@ -220,6 +236,17 @@ alias sshcloud="ssh optimans@64.137.206.167"
 alias pingcloud="ping 64.137.206.167"
 alias sts="git status"
 alias newnote='if [ -f `date +%d-%m-%y` ]; then     echo "A note exists yet"; else     touch `date +%d-%m-%y`; fi'
-PATH=$PATH:/home/pi/jdk1.8.0_77/bin/
-export PATH
-fbterm
+alias ulysses="ssh dtolomel@frontend2.hpc.sissa.it"
+alias elcid="ssh dtolomel@elcid.hpc.sissa.it"
+alias c3e="ssh mhpc10@hpc.c3e.exact-lab.it"
+alias brc="source ~/.bashrc"
+
+#experiments aliases
+alias vs="vim script.sh"
+alias vp="vim plot.p"
+alias vc="vim code.c"
+alias es="bash script.sh"
+alias ep="gnuplot plot.p"
+
+
+#fbterm
