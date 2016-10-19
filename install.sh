@@ -16,3 +16,5 @@ git config --global alias.co checkout
 git config --global alias.pullom 'pull origin master'
 git config --global alias.pushom 'push origin master'
 git config --global alias.cme 'commit -m "quick commit"'
+git config --global alias.draw 'log --graph --decorate --oneline'
+git config --global alias.remotes 'remote -v'

@@ -85,7 +85,8 @@ map <F3> :wq
 map <F4> bdw
 imap <F4> <C-W>
 map <F5> :source $MYVIMRC<CR>
-map <F7> :!astyle --style=google '@'
+"map <F7> :!astyle --style=google '@'
+map <F7> :s/#//g<Left><Left>
 map <F9> :execute install<CR>
 map <F10> :execute run<CR>
 map <F12> @:
@@ -117,9 +118,10 @@ inoremap ;in #include <.h><Esc>hhi
 inoremap ;pf printf("\n", );<Esc>6hi
 inoremap ;fun void function() {<Esc>o<Esc>o}<Esc>kkwwl
 inoremap ;main int main(int argc, char** argv) {<Esc>o<Esc>o<Tab>return 0;<Esc>o}<Esc><<kki<Tab>
-imap ;for for (int i=0; i<; i++) {<CR><Esc>ddkf<a
+imap ;for for (int #=0; #<; #++) {<CR><Esc>ddkf<a
 imap ;while while() {<CR><Esc>ddkf(a
 inoremap ;pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
+inoremap ;mall #* data = (#*) malloc(size * sizeof(#));<Esc>4bcw
 
 "Javascript Abbreviations
 imap ;nt new THREE.
@@ -131,15 +133,10 @@ imap ({ ({<CR>
 imap ;swi switch() {<CR>case :<Esc>o<Tab>break;<Up><Up><Left><Left><Left>
 imap ;out System.out.println();<Left><Left>
 
-
-"if strftime("%H") < 6 + 0
-    "echo "setting colorscheme to blue"
-"elseif strftime("%H") < 12 + 0
-    "echo "setting colorscheme to morning"
-"elseif strftime("%H") < 18 + 0
-    "echo "setting colorscheme to shine"
-"else
-    "echo "setting colorscheme to evening"
-"endif
+"MPI Abbreviations
+inoremap ;mpi MPI_Init(&argc, &argv);<CR>MPI_Comm_size(MPI_COMM_WORLD, &size);<CR>MPI_Comm_rank(MPI_COMM_WORLD, &rank);<CR><CR>MPI_Finalize();<Up><Tab>
+inoremap ;mcw MPI_COMM_WORLD
+inoremap ;msi MPI_STATUS_IGNORE
+imap ;ir if (!rank) {<CR>
 
 let g:airline_theme='dark'
