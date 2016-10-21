@@ -134,7 +134,7 @@ imap ;swi switch() {<CR>case :<Esc>o<Tab>break;<Up><Up><Left><Left><Left>
 imap ;out System.out.println();<Left><Left>
 
 "MPI Abbreviations
-inoremap ;mpi MPI_Init(&argc, &argv);<CR>MPI_Comm_size(MPI_COMM_WORLD, &size);<CR>MPI_Comm_rank(MPI_COMM_WORLD, &rank);<CR><CR>MPI_Finalize();<Up><Tab>
+inoremap ;mpi MPI_Init(&argc, &argv);<CR>int rank, size;<CR>MPI_Comm_size(MPI_COMM_WORLD, &size);<CR>MPI_Comm_rank(MPI_COMM_WORLD, &rank);<CR><CR><CR><CR>MPI_Finalize();<Up><Up><Tab>
 inoremap ;mcw MPI_COMM_WORLD
 inoremap ;msi MPI_STATUS_IGNORE
 imap ;ir if (!rank) {<CR>
