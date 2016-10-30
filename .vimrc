@@ -14,7 +14,7 @@ execute pathogen#infect()
 syntax on
 filetype plugin on
 set laststatus=2
-set timeoutlen=300
+set timeoutlen=500
 
 
 "Theming

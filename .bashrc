@@ -122,6 +122,7 @@ fi
 
 #fbset myMode
 setfont /usr/share/consolefonts/Lat15-TerminusBold14.psf.gz
+export TERM=xterm-256color
 alias sshlog='sventurelli@tesla.unife.it'
 alias temps='cat /sys/class/thermal/thermal_zone?/temp'
 
@@ -240,6 +241,8 @@ alias ulysses="ssh dtolomel@frontend2.hpc.sissa.it"
 alias elcid="ssh dtolomel@elcid.hpc.sissa.it"
 alias c3e="ssh mhpc10@hpc.c3e.exact-lab.it"
 alias brc="source ~/.bashrc"
+alias gcc="gcc -Wall -Werror -std=c99"
+alias mpicc="mpicc -Wall -Werror -std=c99"
 
 #experiments aliases
 alias vs="vim script.sh"
@@ -248,6 +251,10 @@ alias vc="vim code.c"
 alias es="bash script.sh"
 alias ep="gnuplot plot.p"
 alias experiment="mkdir $1 && cp ~/myConfig/sample/* $1"
+alias juno="jupyter notebook"
 
+if [ $HOSTNAME == "xps13" ] ; then 
+    xmodmap -e "keycode 94 = Shift_L"
+fi
 
 #fbterm
