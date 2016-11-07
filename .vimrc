@@ -98,6 +98,7 @@ map <A-F11> I'<End>\n' +<Esc><Down>
 inoremap {<CR> {<CR>}<Esc>O<Tab>
 inoremap {} {}
 inoremap {% {%  %}<Left><Left><Left>
+inoremap (( ()<Left>
 "inoremap (  ()<Left>
 "inoremap () ()
 "inoremap [  []<Left>
@@ -132,6 +133,10 @@ imap ({ ({<CR>
 
 imap ;swi switch() {<CR>case :<Esc>o<Tab>break;<Up><Up><Left><Left><Left>
 imap ;out System.out.println();<Left><Left>
+
+"HTML Abbreviations
+noremap ;yp yyp:s/</<\//<CR>ko<Tab>
+inoremap ><CR> ><Esc>yyp:s/</<\//<CR>ko<Tab>
 
 "MPI Abbreviations
 inoremap ;mpi MPI_Init(&argc, &argv);<CR>int rank, size;<CR>MPI_Comm_size(MPI_COMM_WORLD, &size);<CR>MPI_Comm_rank(MPI_COMM_WORLD, &rank);<CR><CR><CR><CR>MPI_Finalize();<Up><Up><Tab>
