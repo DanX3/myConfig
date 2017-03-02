@@ -22,7 +22,7 @@ syntax enable
 "let g:solarized_contrast='high'
 "set background=dark
 "set background=dark
-colorscheme github
+"colorscheme github
 colorscheme Tomorrow-Night-Eighties
 hi TabLineSel ctermfg=Black ctermbg=White
 hi TabLine ctermfg=Black ctermbg=Grey
@@ -96,8 +96,9 @@ map <F6> :s//g<Left><Left>
 map <F7> :s/#//g<Left><Left>
 map <F9>  :wall<CR>:!clear && make<CR>
 imap <F9> <Esc><F9>
-map <F10> :wall<CR>:!clear && make && make run<CR>
-imap <F10> <Esc><F10>
+map <F9><F9> :wall<CR>:!clear && make && make run<CR>
+imap <F9><F9> <Esc><F10>
+map <F9><F9><F10> :wall<CR>:!clear && make clean<CR>
 map <F12> @:
 
 "Alt Shortcuts
@@ -107,7 +108,7 @@ map <A-F11> I'<End>\n' +<Esc><Down>
 inoremap {<CR> {<CR>}<Esc>O<Tab>
 inoremap {} {}
 inoremap {% {%  %}<Left><Left><Left>
-inoremap (( ()<Left>
+"inoremap (( ()<Left>
 "inoremap (  ()<Left>
 "inoremap () ()
 "inoremap [  []<Left>
@@ -115,10 +116,11 @@ inoremap (( ()<Left>
 map \\ <Leader>c<Space>
 map "" I"<Esc>A"<Esc>o<Tab>
 "inoremap " ""<Left>
-"inoremap "" ""
+"inoremap "" ""<Left>
 "inoremap ' ''<Left>
 "inoremap '' ''
 "map __ :s/-/_/g<CR>A:<CR><Tab>
+inoremap AA <C-o>A 
 map __ :s/-/_/g<CR>A
 nnoremap <Space> i_<Esc>r
 inoremap ;bash <Esc>ggi#!/bin/bash<CR><Esc>''i
@@ -159,7 +161,7 @@ inoremap _{ _{}<Left>
 
 "Fortran Abbreviations
 inoremap ;none IMPLICIT NONE
-noremap ;end yypIEND <Esc>f(D<Esc>
+noremap ;end yypIEND <Esc>wwDxO<Tab>
 let fortran_free_source=1
 let fortran_have_tabs=1
 let fortran_more_precise=1
@@ -167,6 +169,8 @@ let fortran_do_enddo=1
 inoremap ;true .TRUE.
 inoremap ;false .FALSE.
 inoremap ;write WRITE(*,*) 
+inoremap ;fdo DO i=1,n<C-o>oEND DO<C-o>O<Tab>
+inoremap ;fif IF () THEN<CR>ELSE<CR>END IF<Up><Up><Esc>^f(a
 
 "MPI Abbreviations
 inoremap ;mpi MPI_Init(&argc, &argv);<CR>int rank, size;<CR>MPI_Comm_size(MPI_COMM_WORLD, &size);<CR>MPI_Comm_rank(MPI_COMM_WORLD, &rank);<CR><CR><CR><CR>MPI_Finalize();<Up><Up><Tab>
