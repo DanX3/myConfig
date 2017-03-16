@@ -3,18 +3,22 @@
 #set yrange [0:16]
 set autoscale
 
-#setting labels
+#axis settings
 set title 'Title'
 set xlabel 'X axis'
 set ylabel 'Y axis'
+#set log y
+#set log x
+#set xtics rotate by 45 offset -4,-2
 
 #set the legend on the top left corner
 set key left top
 
 #style settings
 set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 2
-set terminal pngcairo size 350,262.5 enhanced font 'Verdana,10'
-set output "plot.png"
+set style line 2 linecolor rgb '#2196F3' pointtype 7 pointsize 2
+set terminal pngcairo size 800,600 enhanced font 'Helvetica,12'
+set grid
 
-#sample plot command
-#plot 'data.dat' using 1:($2/$3) title '1e4' with lines
+set output "plot.png"
+plot 'data.dat' using 1:($2/$3) title '1e4' with lines ls 2

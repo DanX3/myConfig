@@ -15,6 +15,7 @@ syntax on
 filetype plugin on
 set laststatus=2
 set timeoutlen=300
+set foldmethod=indent
 
 
 "Theming
@@ -79,6 +80,8 @@ map tg gT
 map <S-Right> gt
 imap <S-Left> <Esc><S-Left>i
 imap <S-Right> <Esc><S-Right>i
+noremap <S-Up> <C-w>h
+noremap <S-Down> <C-w>l
 
 "FN Shortcuts
 inoremap <F1> <Esc>ddko
@@ -96,27 +99,28 @@ map <F6> :s//g<Left><Left>
 map <F7> :s/#//g<Left><Left>
 map <F9>  :wall<CR>:!clear && make<CR>
 imap <F9> <Esc><F9>
-map <F9><F9> :wall<CR>:!clear && make && make run<CR>
-imap <F9><F9> <Esc><F10>
-map <F9><F9><F10> :wall<CR>:!clear && make clean<CR>
+map <F10> :wall<CR>:!clear && make && make run<CR>
+imap <F10> <Esc><F10>
+map <F10><F10> :wall<CR>:!clear && make && make debug<CR>
+imap <F10><F10> <Esc><F10><F10>
 map <F12> @:
 
 "Alt Shortcuts
 map <A-F11> I'<End>\n' +<Esc><Down>
 
 "Common Abbreviation
-inoremap {<CR> {<CR>}<Esc>O<Tab>
-inoremap {} {}
+inoremap {<CR> {<CR><BS>}<Esc>O
+inoremap {} {}<Left>
 inoremap {% {%  %}<Left><Left><Left>
 "inoremap (( ()<Left>
 "inoremap (  ()<Left>
-"inoremap () ()
+inoremap () ()<Left>
 "inoremap [  []<Left>
-"inoremap [] []
+"inoremap [] []<Left>
 map \\ <Leader>c<Space>
 map "" I"<Esc>A"<Esc>o<Tab>
 "inoremap " ""<Left>
-"inoremap "" ""<Left>
+inoremap "" ""<Left>
 "inoremap ' ''<Left>
 "inoremap '' ''
 "map __ :s/-/_/g<CR>A:<CR><Tab>
@@ -137,8 +141,9 @@ inoremap ;pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
 inoremap ;mall #* data = (#*) malloc(size * sizeof(#));<Esc>4bcw
 
 "C++ Abbreviations
-inoremap ;class class * {<CR>private:<CR>protected:<CR>public:<CR>};<Esc>3<Up>f*cw
+inoremap ;class class # {<CR><BS>private:<CR>protected:<CR>public:<CR>};<Esc>4<Up>f#cw
 inoremap ;cout std::cout << * << '\n';<Esc>F*cw
+inoremap ;ind #ifndef #<CR>#define #<CR><CR> #endif
 
 "Javascript Abbreviations
 imap ;nt new THREE.
@@ -156,7 +161,13 @@ inoremap ><CR> ><Esc>yyp:s/</<\//<CR>ko<Tab>
 
 "Latex Abbreviations
 noremap ;be <ESC>yypI<Esc>/begin<CR>cwend<Esc>O
-inoremap $$ <CR>$$   $$<Left><Left><Left><Left>
+inoremap ;ti {\it }<Left>
+inoremap ;tb {\bf }<Left>
+inoremap ;sub \subsection*{}<Left>
+inoremap ;sec \section*{}<Left>
+inoremap ;item \begin{itemize}<CR>\end{itemize}<C-o>O
+inoremap ;it \item 
+inoremap $$ $$<CR>$$<C-o>O
 inoremap _{ _{}<Left>
 
 "Fortran Abbreviations
@@ -168,8 +179,8 @@ let fortran_more_precise=1
 let fortran_do_enddo=1
 inoremap ;true .TRUE.
 inoremap ;false .FALSE.
-inoremap ;write WRITE(*,*) 
-inoremap ;fdo DO i=1,n<C-o>oEND DO<C-o>O<Tab>
+inoremap ;write WRITE(*,*) '#:',#
+inoremap ;fdo DO i=1,<C-o>oEND DO<Up><C-o>A
 inoremap ;fif IF () THEN<CR>ELSE<CR>END IF<Up><Up><Esc>^f(a
 
 "MPI Abbreviations
@@ -177,3 +188,52 @@ inoremap ;mpi MPI_Init(&argc, &argv);<CR>int rank, size;<CR>MPI_Comm_size(MPI_CO
 inoremap ;mcw MPI_COMM_WORLD
 inoremap ;msi MPI_STATUS_IGNORE
 imap ;ir if (!rank) {<CR>
+
+
+""""Vundle Lines
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+"set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+"Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+"Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+"Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+":PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+"auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
