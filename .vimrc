@@ -4,6 +4,8 @@ set number
 set mouse=a
 set tabstop=4
 set softtabstop=4
+set tw=80
+set colorcolumn=80
 
 "Convert tabs into spaces. Use if you need it
 set expandtab
@@ -11,20 +13,22 @@ set shiftwidth=4
 retab
 
 execute pathogen#infect()
-syntax on
 filetype plugin on
 set laststatus=2
 set timeoutlen=300
 set foldmethod=indent
-
+set nofoldenable
+set splitright
+set splitbelow
+set scrolloff=5
 
 "Theming
+syntax on
 syntax enable
 "let g:solarized_contrast='high'
-"set background=dark
-"set background=dark
 "colorscheme github
 colorscheme Tomorrow-Night-Eighties
+set t_Co=256
 hi TabLineSel ctermfg=Black ctermbg=White
 hi TabLine ctermfg=Black ctermbg=Grey
 "let g:airline#extensions#tabline#enabled = 1
@@ -52,7 +56,7 @@ let install = "!pebble install --cloudpebble"
 "let g:airline_symbols.readonly = ''
 "let g:airline_symbols.linenr = ''
 "let g:Powerline_symbols='unicode'
-    
+
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
@@ -68,7 +72,6 @@ map <C-Up> ddkP
 imap <C-Up> <Esc><C-Up>
 map <C-Down> ddp
 imap <C-Down> <Esc><C-Down>a
-noremap <C-T> :tabedit 
 map <C-\> :NERDTreeToggle<CR>
 map ;; A;<Esc>
 inoremap <C-J> <Esc>A;<CR>
@@ -78,10 +81,13 @@ inoremap <C-J> <Esc>A;<CR>
 map <S-Left> gT
 map tg gT
 map <S-Right> gt
+noremap <S-T> :tabedit 
 imap <S-Left> <Esc><S-Left>i
 imap <S-Right> <Esc><S-Right>i
-noremap <S-Up> <C-w>h
-noremap <S-Down> <C-w>l
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
 
 "FN Shortcuts
 inoremap <F1> <Esc>ddko
@@ -90,13 +96,15 @@ map <F2><F2> :wall<CR>
 imap <F2> <Esc><F2>
 imap <F2><F2> <Esc><F2><F2>
 map <F3> :wq
-map <F4> bdw
+map <F4> :%s/\s\+$//e<CR>:w<CR>
 imap <F4> <C-W>
 map <F5> :source $MYVIMRC<CR>
 "map <F6> <Leader>ig
 map <F6> :s//g<Left><Left>
 "map <F7> :!astyle --style=google '@'
 map <F7> :s/#//g<Left><Left>
+map <F7><F7> :s/#/i/g<CR>
+map <F8> :TagbarToggle<CR>
 map <F9>  :wall<CR>:!clear && make<CR>
 imap <F9> <Esc><F9>
 map <F10> :wall<CR>:!clear && make && make run<CR>
@@ -109,7 +117,7 @@ map <F12> @:
 map <A-F11> I'<End>\n' +<Esc><Down>
 
 "Common Abbreviation
-inoremap {<CR> {<CR><BS>}<Esc>O
+inoremap {<CR> {<CR>}<Esc>O<Tab>
 inoremap {} {}<Left>
 inoremap {% {%  %}<Left><Left><Left>
 "inoremap (( ()<Left>
@@ -124,8 +132,7 @@ inoremap "" ""<Left>
 "inoremap ' ''<Left>
 "inoremap '' ''
 "map __ :s/-/_/g<CR>A:<CR><Tab>
-inoremap AA <C-o>A 
-map __ :s/-/_/g<CR>A
+inoremap AA <C-o>A
 nnoremap <Space> i_<Esc>r
 inoremap ;bash <Esc>ggi#!/bin/bash<CR><Esc>''i
 
@@ -139,11 +146,12 @@ imap ;for for (int #=0; #<; #++) {<CR><Esc>ddkf<a
 imap ;while while() {<CR><Esc>ddkf(a
 inoremap ;pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
 inoremap ;mall #* data = (#*) malloc(size * sizeof(#));<Esc>4bcw
-
+inoremap ;if #if 1<CR>#endif<Up>
 "C++ Abbreviations
 inoremap ;class class # {<CR><BS>private:<CR>protected:<CR>public:<CR>};<Esc>4<Up>f#cw
 inoremap ;cout std::cout << * << '\n';<Esc>F*cw
 inoremap ;ind #ifndef #<CR>#define #<CR><CR> #endif
+inoremap ;:: std::
 
 "Javascript Abbreviations
 imap ;nt new THREE.
@@ -166,9 +174,13 @@ inoremap ;tb {\bf }<Left>
 inoremap ;sub \subsection*{}<Left>
 inoremap ;sec \section*{}<Left>
 inoremap ;item \begin{itemize}<CR>\end{itemize}<C-o>O
-inoremap ;it \item 
+inoremap ;it \item
 inoremap $$ $$<CR>$$<C-o>O
 inoremap _{ _{}<Left>
+inoremap ;frac \frac{}{}<Left><Left><Left>
+inoremap {\ {\bar }<Left>
+inoremap ^^ ^{}<Left>
+inoremap __ _{}<Left>
 
 "Fortran Abbreviations
 inoremap ;none IMPLICIT NONE
@@ -189,51 +201,9 @@ inoremap ;mcw MPI_COMM_WORLD
 inoremap ;msi MPI_STATUS_IGNORE
 imap ;ir if (!rank) {<CR>
 
+"Syntastic lines
+let g:syntastic_check_on_open = 1
 
-""""Vundle Lines
-
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-"set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just
-":PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to
-"auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+iabbr piu' più
+iabbr perche' perché
+iabbr dovro' dovrò
