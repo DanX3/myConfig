@@ -16,6 +16,9 @@ if version > 580
   endif
 endif
 
+"set background dark unconditionally
+set background=dark
+
 let g:colors_name='gruvbox'
 
 if !has('gui_running') && &t_Co != 256
