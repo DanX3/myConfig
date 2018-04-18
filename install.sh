@@ -1,4 +1,5 @@
 echo "Installing dotfiles..."
+cp ~/.vimrc ~/.vimrc.bak
 cp -r .conkyrc .bashrc .vimrc .bash/ .vim/ .oh-my-zsh/  ~/
 sudo cp experiment /usr/bin/experiment
 if ! [ -e /usr/share/fonts/opentype/ ] ; then

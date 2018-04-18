@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/optimans/.vim/bundle/Vundle.vim'
 let g:netrw_dirhist_2='/home/optimans/projects/Board'
 let g:netrw_dirhist_3='/home/optimans/projects/mhpc/P2.4_seed/sources/include'
 let g:netrw_dirhist_4='/home/optimans/.config/terminator'
 let g:netrw_dirhist_5='/home/optimans/projects/mhpc/P2.10_seed/src'
+let g:netrw_dirhist_6='/home/optimans/.vim/after/ftplugin'

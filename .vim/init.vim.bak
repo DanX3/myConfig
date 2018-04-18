@@ -1,0 +1,240 @@
+if has('vim_starting')
+  " Required:
+  set runtimepath+=/home/optimans/.config/nvim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('/home/optimans/.config/nvim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'arakashic/chromatica.nvim'
+NeoBundle 'neomake/neomake'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'pseewald/vim-anyfold'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'vim-scripts/vim-auto-save'
+NeoBundle 'floobits/floobits-neovim'
+
+" You can specify revision/branch/tag.
+NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+syntax on
+let anyfold_activate=1
+set foldlevel=1
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+
+"End NeoBundle Scripts-------------------------
+
+call neomake#configure#automake('w')
+
+set autoindent
+"set noruler
+set number
+set mouse=a
+set tabstop=4
+set softtabstop=4
+set columns=80
+set cc=80
+set tw=80
+
+"Convert tabs into spaces. Use if you need it
+set expandtab
+set shiftwidth=4
+retab
+
+"execute pathogen#infect()
+"syntax on
+set laststatus=2
+set timeoutlen=300
+
+
+"Theming
+syntax enable
+"let g: solarized_contrast='high'
+"set background=dark
+"set background=dark
+if 0
+    colorscheme github
+    hi TabLineSel ctermfg=Black ctermbg=White
+    hi TabLine ctermfg=White ctermbg=Black
+    hi TabLineFill ctermbg=Black
+else 
+    colorscheme Tomorrow-Night-Eighties
+    hi TabLineSel ctermfg=Black ctermbg=White
+    hi TabLine ctermfg=Black ctermbg=White
+    hi TabLineFill ctermbg=White
+endif
+
+let g:airline_powerline_fonts = 0
+
+
+" unicode symbols
+"let g: airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g: airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"
+" " airline symbols
+let g:airline#extension#tabline#enabled = 1
+let g:airline_left_sep = ''
+"let g: airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+"let g: airline_right_alt_sep = ''
+"let g: airline_symbols.branch = ''
+"let g:airline_symbols.readonly = ''
+"let g: airline_symbols.linenr = ''
+"let g:Powerline_symbols='unicode'
+
+
+"let g: solarized_termcolors=256
+"let g:solarized_contrast='low'
+
+
+"Ctrl Shortcuts
+"map <C-W> :close<CR>
+map <F29> :tabe $MYVIMRC<CR>
+map <C-Up> ddkP
+imap <C-Up> <Esc><C-Up>
+map <C-Down> ddp
+imap <C-Down> <Esc><C-Down>a
+map <C-\> :NERDTreeToggle<CR>
+map ;; A;<Esc>
+
+
+"Shift Shortcuts
+map <S-Left> gT
+map tg gT
+map <S-Right> gt
+noremap <S-T> :tabedit 
+imap <S-Left> <Esc><S-Left>i
+imap <S-Right> <Esc><S-Right>i
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+
+"FN Shortcuts
+map <F2> :w<CR>
+map <F2><F2> :wall<CR>
+imap <F2> <Esc><F2>
+imap <F2><F2> <Esc><F2><F2>
+map <F3> :wq
+map <F4> :%s/\s\+$//e<CR>:w<CR>
+imap <F4> <C-W>
+map <F5> :source $MYVIMRC<CR>
+"map <F6> <Leader>ig
+map <F6> :wall<CR>:<Up><CR>
+map <F7> :s//g<Left><Left>
+"map <F7> :!astyle --style=google '@'
+map <F7><F7> :s/#//g<Left><Left>
+map <F8> :TagbarToggle<CR>
+map <F9>  :wall<CR>:!clear && make<CR>
+imap <F9> <Esc><F9>
+map <F10> :wall<CR>:!clear && make && make run<CR>
+imap <F10> <Esc><F10>
+"map <F10><F10> :wall<CR>:!clear && make && make debug<CR>
+"imap <F10><F10> <Esc><F10><F10>
+map <F12> @:
+
+"Alt Shortcuts
+map <A-F11> I'<End>\n' +<Esc><Down>
+
+"Common Abbreviation
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {} {}<Left>
+inoremap {% {%  %}<Left><Left><Left>
+"inoremap (( ()<Left>
+"inoremap (  ()<Left>
+"inoremap ( ()<Left>
+"inormap [  []<Left>
+"inoremap [] []<Left>
+map \\ <Leader>c<Space>
+map "" I"<Esc>A"<Esc>o<Tab>
+"inoremap " ""<Left>
+inoremap "" ""<Left>
+"inoremap ' ''<Left>
+"inoremap '' ''
+"map __ :s/-/_/g<CR>A:<CR><Tab>
+inoremap AA <C-o>A
+nnoremap <Space> i_<Esc>r
+inoremap ;bash <Esc>ggi#!/bin/bash<CR><Esc>''i
+
+"C Abbreviations
+inoremap ;in #include <><ESC>F<a
+inoremap ;im #include ".h"<Esc>hhi
+inoremap ;pf printf("\n", );<Esc>6hi
+inoremap ;fun void function() {<Esc>o<Esc>o}<Esc>kkwwl
+inoremap ;main int main(int argc, char** argv) {<Esc>o<Esc>o<Tab>return 0;<Esc>o}<Esc><<kki<Tab>
+imap ;for for (int #=0; #<; #++) {<CR><Esc>ddkf<a
+imap ;while while() {<CR><Esc>ddkf(a
+inoremap ;pragma #pragma omp parallel<CR>{<CR>}<Up><CR><Tab>
+inoremap ;mall #* data = (#*) malloc(size * sizeof(#));<Esc>4bcw
+inoremap ;if #if 1<CR>#endif<Up>
+
+"C++ Abbreviations
+imap ;class class # {<CR><BS>private:<CR>protected:<CR>public:<Esc>jA;<Esc>4<Up>f#s
+inoremap ;cout std::cout << * << '\n';<Esc>F*cw
+inoremap ;ind #ifndef #<CR>#define #<CR><CR> #endif
+inoremap ;:: std::
+map ;< O<Esc>j<<f(bi#::<Esc>A<BS> {<CR><Esc>ddk^f#s
+
+"Java Abbreviations
+imap ;so System.out.println();<Left><Left>
+
+"Python Abbreviations
+imap ;se self.# = #<Esc><F7><F7>
+iabbr slef self
+imap ;now self.env.now
+
+"Fortran Abbreviations
+inoremap ;none IMPLICIT NONE
+noremap ;end yypIEND <Esc>wwDxO<Tab>
+let fortran_free_source=1
+let fortran_have_tabs=1
+let fortran_more_precise=1
+let fortran_do_enddo=1
+inoremap ;true .TRUE.
+inoremap ;false .FALSE.
+inoremap ;write WRITE(*,*) '#:',#
+inoremap ;fdo DO i=1,<C-o>oEND DO<Up><C-o>A
+inoremap ;fif IF () THEN<CR>ELSE<CR>END IF<Up><Up><Esc>^f(a
+
+" LaTex Abbreviations
+inoremap ;ti \textit{}<Left>
+inoremap ;tb \textbf{}<Left>
+inoremap ;ig \includegraphics[width=\textwidth]{}<Left>
+inoremap ;it \item 
+
+
+"MPI Abbreviations
+inoremap ;mpi MPI_Init(&argc, &argv);<CR>int rank, size;<CR>MPI_Comm_size(MPI_COMM_WORLD, &size);<CR>MPI_Comm_rank(MPI_COMM_WORLD, &rank);<CR><CR><CR><CR>MPI_Finalize();<Up><Up><Tab>
+inoremap ;mcw MPI_COMM_WORLD
+inoremap ;msi MPI_STATUS_IGNORE
+imap ;ir if (!rank) {<CR>
