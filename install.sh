@@ -1,10 +1,12 @@
 echo "Installing dotfiles..."
 cp ~/.vimrc ~/.vimrc.bak
-cp -r .conkyrc .bashrc .vimrc .bash/ .vim/ .oh-my-zsh/  ~/
+cp -r ~/.vim .vim.bak
+cp -r .bashrc .vimrc .bash/ .vim/ .oh-my-zsh/  ~/
 sudo cp experiment /usr/bin/experiment
 if ! [ -e /usr/share/fonts/opentype/ ] ; then
     echo "Installing fonts..."
     sudo cp -r opentype/ /usr/share/fonts/
+    sudo cp -r ttf /usr/share/fonts/truetype/
     fc-cache
 fi
 
