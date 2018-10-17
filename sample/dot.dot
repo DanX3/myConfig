@@ -1,0 +1,7 @@
+digraph sample {
+    node [shape=box style="rounded,solid" penwidth=2.0 color="#90caf9" fontcolor="#424242"
+    fontsize=20.0 fontname="Noto Sans" ]
+    edge [color="#424242" penwidth=2.0 fontname="Noto Sans:style=Bold" fontsize=18.0]
+    splines=ortho
+    style=dashed
+}
