@@ -1,0 +1,15 @@
+SRCS = $(shell find dots/ -name "*.dot")
+TARGET = $(patsubst dots/%, svgs/%, $(SRCS:.dot=.svg))
+
+all: $(TARGET)
+
+svgs/%.svg: dots/%.dot
+	dot -Tsvg $< > $@
+
+clean:
+	rm -f $(TARGET)
+	rm -f build/*.o
+
+print:
+	@echo $(TARGET)
+	@echo $(SRCS)

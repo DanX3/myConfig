@@ -9,8 +9,6 @@ set expandtab
 set shiftwidth=4
 retab
 
-filetype plugin on
-filetype plugin indent on
 set laststatus=2
 set timeoutlen=300
 set foldmethod=indent
@@ -21,12 +19,14 @@ set scrolloff=1
 set scrolljump=5
 
 set rtp+=~/.vim/bundle/Vundle.vim
+set filetype off
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdtree'
 call vundle#end()
+filetype plugin indent on
 
 "Theming
 syntax on
@@ -99,4 +99,3 @@ map \\ <Leader>c<Space>
 nnoremap <Space> i_<Esc>r
 inoremap ;bash <Esc>ggi#!/bin/bash<CR><Esc>''i
 source ~/.vim/mappings.vim
-
